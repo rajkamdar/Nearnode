@@ -13,8 +13,6 @@ router.get('/getall',function(req,res){
 });
 
 router.get('/nearby', function(req, res, next){
-    console.log("aayu");
-    console.log(req.query);
     User.geoNear(
         {type: 'Point', coordinates: [parseFloat(req.query.lon), parseFloat(req.query.lat)]},
         {maxDistance: 100000, spherical: true}
@@ -30,7 +28,6 @@ router.post('/nearby',function(req,res,next){
     else
       res.send({status:'0'});
   }).catch(next);
-  //res.send({type:'POST'});
 });
 
 router.put('/nearby/:id',function(req,res,next){

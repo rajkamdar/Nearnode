@@ -20,7 +20,7 @@
 
         <!-- Create React Component -->
         <script type="text/babel">
-        var users = React.createClass({
+        var Users = React.createClass({
             getInitialState: function(){
                 return({
                     users: []
@@ -43,8 +43,8 @@
                             <label>Enter your Latitude:</label>
                             <input type="text" ref="lat" placeholder="latitude" required />
                             <label>Enter your Longitude:</label>
-                            <input type="text" ref="lon" placeholder="longitude" required />
-                            <input type="submit" value="Find users" />
+                            <input type="text" ref="lng" placeholder="longitude" required />
+                            <input type="submit" value="Find People" />
                         </form>
                         <ul>{users}</ul>
                     </div>
@@ -52,10 +52,10 @@
             },
             handleSubmit: function(e){
                 e.preventDefault();
-                var lon = this.refs.lon.value;
+                var lng = this.refs.lng.value;
                 var lat = this.refs.lat.value;
 
-                fetch('/api/nearby?lon=' + lon + '&lat=' + lat).then(function(data){
+                fetch('/api/nearby?lon=' + lng + '&lat=' + lat).then(function(data){
                     return data.json();
                 }).then( json => {
                     this.setState({
@@ -65,7 +65,7 @@
                 });
             }
         });
-        ReactDOM.render(<users />, document.getElementById('users'));
+        ReactDOM.render(<Users />, document.getElementById('users'));
         </script>
 
 
